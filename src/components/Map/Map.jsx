@@ -2,6 +2,8 @@ import React from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import Marker from './Marker';
+
 const MainMap = ({ center }) => {
   return (
     <>
@@ -10,6 +12,7 @@ const MainMap = ({ center }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
+        <Marker position={center} />
       </Map>
     </>
   );
