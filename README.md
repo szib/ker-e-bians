@@ -1,3 +1,16 @@
+1. Create a `.env` file in the same folder as `package.json`.
+2. Put the backend's url into it as
+
+```
+REACT_APP_API_URL=http://xxxxxxxx.ngrok.io
+```
+
+3. Run `npm install`
+4. Run `npm start`
+5. Celebrate my greatness. 😎
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
