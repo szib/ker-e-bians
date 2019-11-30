@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TaxiAppBar = () => {
+const TaxiAppBar = ({ refreshHandler }) => {
   const classes = useStyles();
   return (
     <AppBar
@@ -24,11 +24,8 @@ const TaxiAppBar = () => {
       elevation={20}
     >
       <Toolbar>
-        <Button variant="contained" color="primary">
-          Just a button{' '}
-          <span role="img" aria-label="emoji">
-            😳
-          </span>
+        <Button variant="contained" color="primary" onClick={refreshHandler}>
+          Refresh data
         </Button>
       </Toolbar>
     </AppBar>

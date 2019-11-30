@@ -3,8 +3,13 @@ import { Map, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import Marker from './Marker';
+import ParkingBay from './ParkingBay';
 
-const MainMap = ({ center }) => {
+const logEvent = event => {
+  console.log(event);
+};
+
+const MainMap = ({ center, parkingCoords }) => {
   return (
     <>
       <Map center={center.toArray()} zoom={17} scrollWheelZoom={false}>
@@ -13,6 +18,9 @@ const MainMap = ({ center }) => {
           url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
         <Marker position={center} />
+        {parkingCoords && (
+          <ParkingBay positions={parkingCoords} clickHandler={logEvent} />
+        )}
       </Map>
     </>
   );
