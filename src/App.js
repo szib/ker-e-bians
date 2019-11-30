@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import useParkingSpots from './hooks/useParkingSpots';
+
+import Position from './lib/Position';
+import Map from './components/Map/Map';
+import AppBar from './components/AppBar/AppBar';
+
+// Center location
+// 51.536388, -0.140556
+const center = new Position(51.536388, -0.140556);
+const params = {
+  latitude: center.lat,
+  longitude: center.long,
+  distance: 0.25
+};
+
 function App() {
+  const api = useParkingSpots({ params });
+  const [{ data, error, getCoordinates }, execute] = api;
+
+  if (error) return <div>Error...</div>;
+
+  const coords = getCoordinates(data);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Map center={center} parkingCoords={coords} />
+      <AppBar refreshHandler={execute} />
+    </>
   );
 }
 
