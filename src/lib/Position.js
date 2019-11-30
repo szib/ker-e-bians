@@ -21,6 +21,14 @@ class Position {
     };
   }
 
+  lat() {
+    return this.lat;
+  }
+
+  long() {
+    return this.long;
+  }
+
   // distanceTo(position) {
   //   return haversine(this.toObject(), position.toObject(), {
   //     unit: "km"
