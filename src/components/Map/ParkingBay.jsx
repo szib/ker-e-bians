@@ -7,7 +7,7 @@ const ParkingBay = ({ positions, clickHandler, popupContent }) => {
     <Polyline
       positions={positions}
       color="lime"
-      weight={4}
+      weight={6}
       onclick={clickHandler}
     >
       <Popup>

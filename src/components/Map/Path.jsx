@@ -3,7 +3,7 @@ import { Polyline } from 'react-leaflet';
 
 const Path = ({ path }) => {
   return path ? (
-    <Polyline positions={path} color="blue" weight={4}></Polyline>
+    <Polyline positions={path} color="#2f47ea" opacity={.7} weight={3}></Polyline>
   ) : null;
 };
 
