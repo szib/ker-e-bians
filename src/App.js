@@ -37,7 +37,7 @@ function App() {
   const api = useParkingSpots({ params });
   const apiPath = useRouteWithPath({ routeRarams });
   const [{ data, error, getCoordinates }, execute] = api;
-  const [{ data: pathData, error: pathError, execute: executePath }] = apiPath;
+  const [{ data: pathData, error: pathError }, executePath] = apiPath;
 
   if (error) return <div>Error...</div>;
 
@@ -46,7 +46,11 @@ function App() {
   return (
     <>
       <Map center={center} parkingCoords={coords} path={pathData} />
-      <AppBar handleChangeDistance={changeDistance} refreshHandler={execute} />
+      <AppBar
+        handleChangeDistance={changeDistance}
+        refreshHandler={execute}
+        refreshPathHandler={executePath}
+      />
     </>
   );
 }

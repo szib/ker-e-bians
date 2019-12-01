@@ -13,16 +13,19 @@ const useStyles = makeStyles(theme => ({
     height: 100
   },
   slider: {
-    width: 300,
+    width: 300
   },
   space: {
     width: 50
   }
 }));
 
-const TaxiAppBar = ({ refreshHandler, handleChangeDistance }) => {
+const TaxiAppBar = ({
+  refreshHandler,
+  refreshPathHandler,
+  handleChangeDistance
+}) => {
   const classes = useStyles();
-
 
   return (
     <AppBar
@@ -36,17 +39,25 @@ const TaxiAppBar = ({ refreshHandler, handleChangeDistance }) => {
         <Button variant="contained" color="primary" onClick={refreshHandler}>
           Refresh data
         </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={refreshPathHandler}
+        >
+          Refresh path
+        </Button>
         <div className={classes.space}></div>
-        <Slider className={classes.slider}
-        defaultValue={200}
-        onChange={(event, distance) => handleChangeDistance(distance)}
-        //getAriaValueText={valuetext}
-        aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
-        step={50}
-        marks
-        min={50}
-        max={1500}
+        <Slider
+          className={classes.slider}
+          defaultValue={200}
+          onChange={(event, distance) => handleChangeDistance(distance)}
+          //getAriaValueText={valuetext}
+          aria-labelledby="discrete-slider"
+          valueLabelDisplay="auto"
+          step={50}
+          marks
+          min={50}
+          max={1500}
         />
       </Toolbar>
     </AppBar>
