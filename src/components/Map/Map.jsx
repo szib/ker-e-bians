@@ -4,12 +4,13 @@ import 'leaflet/dist/leaflet.css';
 
 import Marker from './Marker';
 import ParkingBay from './ParkingBay';
+import Path from './Path';
 
 const logEvent = event => {
   console.log(event);
 };
 
-const MainMap = ({ center, parkingCoords }) => {
+const MainMap = ({ center, parkingCoords, parkingSlots, path, startCoord }) => {
   return (
     <>
       <Map center={center.toArray()} zoom={17} scrollWheelZoom={false}>
@@ -18,9 +19,15 @@ const MainMap = ({ center, parkingCoords }) => {
           url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
         <Marker position={center} />
+        <Marker position={startCoord} />
         {parkingCoords && (
-          <ParkingBay positions={parkingCoords} clickHandler={logEvent} />
+          <ParkingBay
+            positions={parkingCoords}
+            parkingSlots={parkingSlots}
+            clickHandler={logEvent}
+          />
         )}
+        {path && <Path path={path} />}
       </Map>
     </>
   );
