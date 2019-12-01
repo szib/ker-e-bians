@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/core/Slider';
 import Checkbox from '@material-ui/core/Checkbox';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -85,7 +86,7 @@ const TaxiAppBar = ({
             'aria-label': 'secondary checkbox'
           }}
         />
-        Resident Permit
+        <Typography variant="subtitle2">Resident Permit</Typography>
         <div className={classes.littlespace}></div>
         <Checkbox
           checked={state.Paid}
@@ -96,7 +97,7 @@ const TaxiAppBar = ({
             'aria-label': 'secondary checkbox'
           }}
         />
-        Paid
+        <Typography variant="subtitle2">Paid</Typography>
         <div className={classes.littlespace}></div>
         <Checkbox
           checked={state.carclub}
@@ -107,7 +108,7 @@ const TaxiAppBar = ({
             'aria-label': 'secondary checkbox'
           }}
         />
-        Car Sharing
+        <Typography variant="subtitle2">Car Sharing</Typography>
       </Toolbar>
     </AppBar>
   );
