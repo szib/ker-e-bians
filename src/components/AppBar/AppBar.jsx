@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -35,12 +35,12 @@ const TaxiAppBar = ({
   const [state, setState] = React.useState({
     residentpermit: false,
     paid: false,
-    carclub: false,
+    carclub: false
   });
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
-    handleCheckboxChange(name, event.target.checked)
+    handleCheckboxChange(name, event.target.checked);
   };
 
   return (
@@ -77,35 +77,35 @@ const TaxiAppBar = ({
         />
         <div className={classes.space}></div>
         <Checkbox
-        checked={state.residentpermit}
-        onChange={handleChange('residentpermit')}
-        value="paid"
-        color="primary"
-        inputProps={{
-          'aria-label': 'secondary checkbox',
-        }}
+          checked={state.residentpermit}
+          onChange={handleChange('residentpermit')}
+          value="paid"
+          color="primary"
+          inputProps={{
+            'aria-label': 'secondary checkbox'
+          }}
         />
         Resident Permit
         <div className={classes.littlespace}></div>
         <Checkbox
-        checked={state.paid}
-        onChange={handleChange('paid')}
-        value="paid"
-        color="primary"
-        inputProps={{
-          'aria-label': 'secondary checkbox',
-        }}
+          checked={state.paid}
+          onChange={handleChange('paid')}
+          value="paid"
+          color="primary"
+          inputProps={{
+            'aria-label': 'secondary checkbox'
+          }}
         />
         Paid
         <div className={classes.littlespace}></div>
         <Checkbox
-        checked={state.carclub}
-        onChange={handleChange('carclub')}
-        value="carclub"
-        color="primary"
-        inputProps={{
-          'aria-label': 'secondary checkbox',
-        }}
+          checked={state.carclub}
+          onChange={handleChange('carclub')}
+          value="carclub"
+          color="primary"
+          inputProps={{
+            'aria-label': 'secondary checkbox'
+          }}
         />
         Car Sharing
       </Toolbar>
