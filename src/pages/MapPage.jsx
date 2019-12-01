@@ -12,8 +12,8 @@ import AppBar from '../components/AppBar/AppBar';
 
 // Center location
 // 51.536388, -0.140556
-const startCoord = new Position(51.554315, -0.093303);
-const center = new Position(51.53946199880376, -0.1390471076674527);
+var startCoord = new Position(51.555519, -0.089773);
+var center = new Position(51.551251, -0.175297);
 const params = {
   latitude: center.lat,
   longitude: center.long,
@@ -29,6 +29,27 @@ const routeRarams = {
   distance: 0.25,
   reason: ''
 };
+
+function changeStartLocation(event) {
+  var name = event.target.value
+  if (name == "7 Stradbroke Rd") {
+    startCoord = new Position(51.554315, -0.093303);
+    routeRarams.startLat = startCoord.lat;
+    routeRarams.startLong = startCoord.long
+  }
+}
+
+function changeEndLocation(event) {
+  var name = event.target.value
+  console.log(name)
+  if (name == "32 Ossulston St") {
+    center = new Position(51.531424, -0.130364);
+    routeRarams.endLat = center.lat;
+    routeRarams.endLong = center.long
+    params.latitude = center.lat;
+    params.longitude = center.long
+  }
+}
 
 function changeDistance(distance) {
   params.distance = distance * 0.001;
@@ -67,6 +88,7 @@ const MapPage = () => {
     <>
       <Map
         center={center}
+        startCoord={startCoord}
         parkingCoords={coords}
         parkingSlots={parkingSlots}
         path={pathData}
@@ -76,6 +98,8 @@ const MapPage = () => {
         refreshHandler={execute}
         refreshPathHandler={executePath}
         handleCheckboxChange={changeCheckboxes}
+        handleChangeFrom={changeStartLocation}
+        handleChangeTo={changeEndLocation}
       />
     </>
   );

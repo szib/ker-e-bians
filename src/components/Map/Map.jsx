@@ -10,7 +10,7 @@ const logEvent = event => {
   console.log(event);
 };
 
-const MainMap = ({ center, parkingCoords, parkingSlots, path }) => {
+const MainMap = ({ center, parkingCoords, parkingSlots, path, startCoord }) => {
   return (
     <>
       <Map center={center.toArray()} zoom={17} scrollWheelZoom={false}>
@@ -19,6 +19,7 @@ const MainMap = ({ center, parkingCoords, parkingSlots, path }) => {
           url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
         <Marker position={center} />
+        <Marker position={startCoord} />
         {parkingCoords && (
           <ParkingBay
             positions={parkingCoords}
