@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Polyline, Popup } from 'react-leaflet';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 
-const ParkingBay = ({ positions, clickHandler, popupContent }) => {
-  return positions ? (
-    <Polyline
-      positions={positions}
-      color="lime"
-      weight={6}
-      onclick={clickHandler}
-    >
+import uuid from 'uuid/v4';
+
+const PB = ({ pos, slot }) => {
+  const [slots, setSlots] = useState(slot);
+  const [isParking, setIsParking] = useState(false);
+
+  const toggleParking = () => {
+    const newSlots = isParking ? slots + 1 : slots - 1;
+    setSlots(newSlots);
+    setIsParking(prev => !prev);
+  };
+
+  return (
+    <Polyline positions={pos} color="lime" weight={6}>
       <Popup>
         <Typography variant="subtitle2" component="div" color="primary">
-          It's a div
+          Spaces: {slots}
         </Typography>
-        <Typography variant="subtitle2" component="div" color="primary">
-          And another one
-        </Typography>
+        <Button variant="contained" color="primary" onClick={toggleParking}>
+          {isParking ? 'Free up' : 'Park here'}
+        </Button>
       </Popup>
       }
     </Polyline>
-  ) : null;
+  );
+};
+
+const ParkingBay = ({ positions, clickHandler, parkingSlots }) => {
+  if (!positions) return null;
+
+  const elements = positions.map((pos, idx) => (
+    <PB key={uuid()} pos={pos} slot={parkingSlots[idx]} />
+  ));
+
+  return elements;
 };
 
 export default ParkingBay;

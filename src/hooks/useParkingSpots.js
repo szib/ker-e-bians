@@ -10,6 +10,12 @@ const getCoordinates = R.ifElse(
   () => []
 );
 
+const getNumberOfParkingSlots = R.ifElse(
+  R.length,
+  R.map(R.pathOr([], ['properties', 'CarSpaces'])),
+  () => []
+);
+
 const baseURL = process.env.REACT_APP_API_URL;
 
 const useParkingSpots = ({ params }) => {
@@ -19,8 +25,8 @@ const useParkingSpots = ({ params }) => {
     params
   });
 
-  api.push(getCoordinates);
-  api[0] = { ...api[0], getCoordinates };
+  // api.push(getCoordinates);
+  api[0] = { ...api[0], getCoordinates, getNumberOfParkingSlots };
 
   return api;
 };

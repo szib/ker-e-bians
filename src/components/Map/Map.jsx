@@ -10,7 +10,7 @@ const logEvent = event => {
   console.log(event);
 };
 
-const MainMap = ({ center, parkingCoords, path }) => {
+const MainMap = ({ center, parkingCoords, parkingSlots, path }) => {
   return (
     <>
       <Map center={center.toArray()} zoom={17} scrollWheelZoom={false}>
@@ -20,7 +20,11 @@ const MainMap = ({ center, parkingCoords, path }) => {
         />
         <Marker position={center} />
         {parkingCoords && (
-          <ParkingBay positions={parkingCoords} clickHandler={logEvent} />
+          <ParkingBay
+            positions={parkingCoords}
+            parkingSlots={parkingSlots}
+            clickHandler={logEvent}
+          />
         )}
         {path && <Path path={path} />}
       </Map>
