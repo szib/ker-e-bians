@@ -12,7 +12,8 @@ import AppBar from '../components/AppBar/AppBar';
 
 // Center location
 // 51.536388, -0.140556
-const center = new Position(51.536388, -0.140556);
+const center = new Position(51.530749, -0.129642);
+const startCoord = new Position(51.554315, -0.093303)
 const params = {
   latitude: center.lat,
   longitude: center.long,
@@ -21,11 +22,11 @@ const params = {
 };
 
 const routeRarams = {
-  startLat: 51.53974253619081,
-  startLong: 0.13928619720068192,
-  endLat: 51.53946199880376,
-  endLong: -0.1390471076674527,
-  distance: 0.2,
+  startLat: startCoord.lat,
+  startLong: startCoord.long,
+  endLat: center.lat,
+  endLong: center.long,
+  distance: 0.25,
   reason: ''
 };
 
