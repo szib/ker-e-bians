@@ -16,7 +16,8 @@ const center = new Position(51.536388, -0.140556);
 const params = {
   latitude: center.lat,
   longitude: center.long,
-  distance: 0.25
+  distance: 0.25,
+  reason: ""
 };
 
 const routeRarams = {
@@ -24,13 +25,28 @@ const routeRarams = {
   startLong: 0.13928619720068192,
   endLat: 51.53946199880376,
   endLong: -0.1390471076674527,
-  distance: 0.2
+  distance: 0.2,
+  reason: ""
 };
 
 function changeDistance(distance) {
   params.distance = distance * 0.001;
+  routeRarams.distance = distance * 0.001;
   // console.log(params.distance)
   // console.log(distance)
+}
+
+function changeCheckboxes(name, value) {
+  if (!value) {
+    if (name == params.reason) {
+      params.reason = "";
+      routeRarams.reason = "";
+    }
+  } else {
+    params.reason = name
+    routeRarams.reason = name
+  }
+  
 }
 
 function App() {
@@ -50,6 +66,7 @@ function App() {
         handleChangeDistance={changeDistance}
         refreshHandler={execute}
         refreshPathHandler={executePath}
+        handleCheckboxChange={changeCheckboxes}
       />
     </>
   );
