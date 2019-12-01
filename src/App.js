@@ -16,6 +16,12 @@ const params = {
   distance: 0.25
 };
 
+function changeDistance(distance) {
+  params.distance = distance*0.001
+  console.log(params.distance)
+  console.log(distance)
+} 
+
 function App() {
   const api = useParkingSpots({ params });
   const [{ data, error, getCoordinates }, execute] = api;
@@ -27,7 +33,7 @@ function App() {
   return (
     <>
       <Map center={center} parkingCoords={coords} />
-      <AppBar refreshHandler={execute} />
+      <AppBar handleChangeDistance={changeDistance} refreshHandler={execute} />
     </>
   );
 }
