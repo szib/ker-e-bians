@@ -34,7 +34,7 @@ const TaxiAppBar = ({
 
   const [state, setState] = React.useState({
     residentpermit: false,
-    paid: false,
+    Paid: false,
     carclub: false
   });
 
@@ -79,7 +79,7 @@ const TaxiAppBar = ({
         <Checkbox
           checked={state.residentpermit}
           onChange={handleChange('residentpermit')}
-          value="paid"
+          value="Paid"
           color="primary"
           inputProps={{
             'aria-label': 'secondary checkbox'
@@ -88,9 +88,9 @@ const TaxiAppBar = ({
         Resident Permit
         <div className={classes.littlespace}></div>
         <Checkbox
-          checked={state.paid}
-          onChange={handleChange('paid')}
-          value="paid"
+          checked={state.Paid}
+          onChange={handleChange('Paid')}
+          value="Paid"
           color="primary"
           inputProps={{
             'aria-label': 'secondary checkbox'
