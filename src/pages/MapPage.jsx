@@ -31,23 +31,23 @@ const routeRarams = {
 };
 
 function changeStartLocation(event) {
-  var name = event.target.value
-  if (name == "7 Stradbroke Rd") {
+  var name = event.target.value;
+  if (name === '7 Stradbroke Rd') {
     startCoord = new Position(51.554315, -0.093303);
     routeRarams.startLat = startCoord.lat;
-    routeRarams.startLong = startCoord.long
+    routeRarams.startLong = startCoord.long;
   }
 }
 
 function changeEndLocation(event) {
-  var name = event.target.value
-  console.log(name)
-  if (name == "32 Ossulston St") {
+  var name = event.target.value;
+  console.log(name);
+  if (name === '32 Ossulston St') {
     center = new Position(51.531424, -0.130364);
     routeRarams.endLat = center.lat;
-    routeRarams.endLong = center.long
+    routeRarams.endLong = center.long;
     params.latitude = center.lat;
-    params.longitude = center.long
+    params.longitude = center.long;
   }
 }
 
